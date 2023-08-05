@@ -1,0 +1,99 @@
+// const SizedBox(
+              //   height: 20,
+              // ),
+              // Row(
+              //   children: [
+              //     Padding(
+              //       padding: const EdgeInsets.only(left: 18.0),
+              //       child: Container(
+              //         width: 70,
+              //         height: 54,
+              //         decoration: BoxDecoration(
+              //           color: Color.fromARGB(255, 144, 111, 82),
+              //           borderRadius: BorderRadius.circular(10),
+              //         ),
+              //         child: const Center(
+              //             child: Text(
+              //           "User",
+              //           style: TextStyle(
+              //               fontSize: 20,
+              //               fontWeight: FontWeight.bold,
+              //               color: Colors.white),
+              //         )),
+              //       ),
+              //     ),
+              //     Padding(
+              //       padding: const EdgeInsets.only(
+              //         left: 38.0,
+              //       ),
+              //       child: Text(
+              //         "Hey",
+              //         style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // SizedBox(
+              //   height: 20,
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 18.0),
+              //   child: Row(
+              //     children: [
+              //       Container(
+              //         width: 75,
+              //         height: 54,
+              //         decoration: BoxDecoration(
+              //           color: Color.fromARGB(255, 190, 205, 192),
+              //           borderRadius: BorderRadius.circular(10),
+              //         ),
+              //         child: Center(
+              //           child: Text(
+              //             "bot",
+              //             style: TextStyle(
+              //                 color: Colors.white,
+              //                 fontSize: 20,
+              //                 fontWeight: FontWeight.bold),
+              //           ),
+              //         ),
+              //       ),
+              //       Padding(
+              //         padding: const EdgeInsets.only(left: 18.0),
+              //         child: Text(
+              //           "Hi there !What’s going on?",
+              //           style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Spacer(), // Added spacer to push the following widgets to the top
+              // Container(
+              //   padding: const EdgeInsets.all(10),
+              //   child: Row(
+              //     children: [
+              //       Expanded(
+              //         child: TextField(
+              //           // Your text field properties go here
+              //           decoration: InputDecoration(
+              //             hintText: "Enter Your Queries",
+              //             border: OutlineInputBorder(
+              //               borderRadius: BorderRadius.circular(20),
+              //             ),
+              //             filled: true, // Set filled property to true
+              //             fillColor: Color.fromARGB(255, 197, 196, 195),
+              //             contentPadding:
+              //                 const EdgeInsets.symmetric(horizontal: 20),
+              //           ),
+              //         ),
+              //       ),
+              //       IconButton(
+              //         iconSize: 26,
+              //         onPressed: () {
+              //           // Implement your send message logic here
+              //         },
+              //         icon: Icon(Icons.send),
+              //       ),
+              //     ],
+              //   ),
+              // ),
