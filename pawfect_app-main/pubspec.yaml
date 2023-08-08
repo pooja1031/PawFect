@@ -31,7 +31,7 @@ dependencies:
   animated_text_kit: ^4.2.2
   cupertino_icons: ^1.0.2
   dialog_flowtter: null
-  firebase_auth: ^4.7.1
+  firebase_auth: ^4.7.2
   firebase_core: ^2.15.0
   fl_country_code_picker: ^0.1.5
   flutter:
@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^5.1.0
   http: ^1.1.0
   lottie: ^1.2.1
+  
   pinput: ^2.3.0
 
 dev_dependencies:

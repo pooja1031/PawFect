@@ -1,10 +1,8 @@
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pawfect/SCREENS/splash/letusknow.dart';
+import 'package:pawfect/SCREENS/splash/user/verification/verification.dart';
 
 
 class ScreenUser extends StatefulWidget {
@@ -18,6 +16,8 @@ class _ScreenUserState extends State<ScreenUser> {
   final countrypicker = const FlCountryCodePicker();
   CountryCode? countryCode;
   final TextEditingController phonenumberController = TextEditingController();
+  
+
   bool showLabel = true;
 
   @override
@@ -89,7 +89,7 @@ class _ScreenUserState extends State<ScreenUser> {
               child: TextFormField(
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.done,
-                maxLines: 1,
+               // maxLines: 1,
                 decoration: InputDecoration(
                   labelText: showLabel ? "Name" : "",
                   floatingLabelBehavior: FloatingLabelBehavior
@@ -117,7 +117,9 @@ class _ScreenUserState extends State<ScreenUser> {
                 controller: phonenumberController,
                 keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.done,
-                maxLines: 1,
+                //maxLines: 1,
+               // maxLength: 10,
+    
                 decoration: InputDecoration(
                   labelText: showLabel ? "Mobile" : "",
                   filled: true, // Set filled property to true
@@ -139,9 +141,7 @@ class _ScreenUserState extends State<ScreenUser> {
                             Container(
                               width: 45,
                               height: 35,
-                              child: countryCode != null
-                                  ? countryCode!.flagImage()
-                                  : null,
+                              child:countryCode?.flagImage(),
                             ),
                             SizedBox(
                               width: 10,
@@ -173,10 +173,13 @@ class _ScreenUserState extends State<ScreenUser> {
               height: 50,
               minWidth: 110,
 
-              onPressed: () async {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const ScreenLetUsknow()),
-                );
+              onPressed:() {
+                // Perform validation checks before proceeding
+      if (_validateFields()) {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => OTPScreen(phonenumberController.text)),
+        );
+      }
               },
 
               // ignore: sort_child_properties_last
@@ -198,29 +201,30 @@ class _ScreenUserState extends State<ScreenUser> {
               ),
             ),
           ),
+
+
+          
         ]));
   }
+
+  bool _validateFields() {
+  if (phonenumberController.text.isEmpty) {
+    _showSnackbar("Please enter your phone number.");
+    return false;
+  }
+
+  if (countryCode == null) {
+    _showSnackbar("Please choose a country code.");
+    return false;
+  }
+
+  return true;
+}
+
+void _showSnackbar(String message) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+}
 }          
 
 
-
-
-
-
-
-
-
-
-
-
-//ontap:materialbutton
-//  {
-//                 if (CountryCode != null) {
-//                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//                       content: Text(
-//                           "${countryCode!.dialCode}-${phonenumberController.text.trim()}")));
-//                 } else {
-//                   ScaffoldMessenger.of(context).showSnackBar(
-//                       SnackBar(content: Text("Please enter a PhoneNumber")));
-//                 }
-//               
+            

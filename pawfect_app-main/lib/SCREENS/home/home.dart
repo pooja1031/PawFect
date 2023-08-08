@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -16,6 +17,7 @@ class ScreenHome extends StatefulWidget {
 }
 
 class _ScreenHomeState extends State<ScreenHome> {
+  String? uid;
   final tabs = [
     const ScreenHome(),
     const ScreenChatBot(),
@@ -239,5 +241,11 @@ class _ScreenHomeState extends State<ScreenHome> {
         )
       ]),
     );
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    uid = FirebaseAuth.instance.currentUser!.uid;
   }
 }
