@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:pawfect/SCREENS/splash/gender.dart';
@@ -13,6 +15,9 @@ class ScreenBirthday extends StatefulWidget {
 
 class _ScreenBirthdayState extends State<ScreenBirthday> {
   TextEditingController _textEditingController = TextEditingController();
+  CollectionReference userDataCollection = FirebaseFirestore.instance.collection('userData');
+int? _dogAge; // Variable to hold the calculated dog's age
+
   DateTime? _selectedDate; // Step 2: Create a variable to hold the selected date
 
   @override
@@ -42,25 +47,30 @@ class _ScreenBirthdayState extends State<ScreenBirthday> {
     return '${date.day}/${date.month}/${date.year}';
   }
   void showAgePopup(BuildContext context) {
-    int ageInYears = calculateAge(_selectedDate!);
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Your Dog Age'),
-          content: Text('Your dog is $ageInYears years old!'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child:const Text('OK'),
-            ),
-          ],
-            );
-      },
-    );
-  }
+  int ageInYears = calculateAge(_selectedDate!);
+  setState(() {
+    _dogAge = ageInYears; // Set the calculated age
+  });
+
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Your Dog Age'),
+        content: Text('Your dog is $ageInYears years old!'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
 
   int calculateAge(DateTime birthday) {
     DateTime now = DateTime.now();
@@ -79,132 +89,162 @@ class _ScreenBirthdayState extends State<ScreenBirthday> {
           backgroundColor: const Color(
             (0xFFE6E1DD),
           ),
-          body: ListView(children: [
-            ListTile(
-              leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: const Icon(Icons.arrow_back),
-                color: Colors.black,
-                iconSize: 32,
-              ),
-              // trailing: Padding(
-              //   padding: const EdgeInsets.only(left: 78.0, top: 40),
-              //   child: Container(
-              //     height: 200,
-              //     width: 300,
-              //     child: Transform.scale(
-              //       scale: 5.5,
-              //       child: Image.asset("assets/Images/paws.png"),
-              //     ),
-              //   ),
-              // ),
-            ),
-         const   SizedBox(
-              height: 50,
-            ),
-          const  ListTile(
-              leading: Padding(
-                padding:  EdgeInsets.only(left: 28.0),
-                child: Text(
-                  "When did You Celebrate Your\n          Dog’s Birthday?!!",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24),
+          body: Container(
+            
+          decoration:const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+                                             Color(0xFFE6E1DD),
+
+             // Color.fromARGB(255, 28, 163, 41),    // Ending color
+              Color.fromARGB(255, 200, 234, 203), // Starting color
+
+            ],
+          ),
+        ),
+            child: ListView(children: [
+              ListTile(
+                leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(Icons.arrow_back),
+                  color: Colors.black,
+                  iconSize: 32,
                 ),
+                // trailing: Padding(
+                //   padding: const EdgeInsets.only(left: 78.0, top: 40),
+                //   child: Container(
+                //     height: 200,
+                //     width: 300,
+                //     child: Transform.scale(
+                //       scale: 5.5,
+                //       child: Image.asset("assets/Images/paws.png"),
+                //     ),
+                //   ),
+                // ),
               ),
-            ),
-          const  SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 45.0, right: 40),
-              child:GestureDetector(
-      onTap: () => _selectDate(context), // Show the date picker when tapping the GestureDetector
-      child: AbsorbPointer(
-        child: TextField(
-          controller: _textEditingController,
-          decoration: const InputDecoration(
-            hintText: 'Enter your dog\'s Birthday',
-            labelText: 'Dog\'s Birthday',
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                color:  Color.fromARGB(255, 28, 163, 41),
-              ),
-            ),
-            filled: true, // Set filled property to true
-            fillColor: Color.fromARGB(255, 205, 189, 175),
-            contentPadding: EdgeInsets.symmetric(
-              vertical: 17.0, // Adjust vertical padding
-              horizontal: 26.0, // Adjust horizontal padding
-            ),))))
-            ),
-          const  SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 40.0, right: 40),
-              child: Container(
-                width: 200, // Adjust the width of the box as desired
-                height: 350, // Adjust the height of the box as desired
-                decoration: BoxDecoration(
-                  color: Colors.white, // Color of the box
-                  border: Border.all(
-                      color: Colors.white, width: 2), // Border properties
-                ),
-                child: Image.asset(
-                  "assets/Images/bday.jpg",
-                  fit: BoxFit.contain, // Fit the image within the box
-                ),
-              ),
-            ),
-          const  SizedBox(
-              height: 40,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 210.0, right: 41),
-              child: MaterialButton(
+                   const   SizedBox(
                 height: 50,
-                minWidth: 90,
-
-                onPressed: () async {
-                 if (_textEditingController.text.isEmpty) {
-    // Show snackbar to inform the user to enter the details
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Please enter your dog\'s birthday.'),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  } else {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => const ScreenGender()),
-    );
-  }
-                },
-
-                // ignore: sort_child_properties_last
-
-                // ignore: prefer_const_constructors
-                child: Text(
-                  'Continue',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
-                ),
-                // ignore: prefer_const_constructors
-                color: Color.fromARGB(
-                  255,
-                  28,
-                  163,
-                  41,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+              ),
+            const  ListTile(
+                leading: Padding(
+                  padding:  EdgeInsets.only(left: 28.0),
+                  child: Text(
+                    "When did You Celebrate Your\n          Dog’s Birthday?!!",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24),
+                  ),
                 ),
               ),
-            ),
-          ])),
+            const  SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 45.0, right: 40),
+                child:GestureDetector(
+                onTap: () => _selectDate(context), // Show the date picker when tapping the GestureDetector
+                child: AbsorbPointer(
+                  child: TextField(
+            controller: _textEditingController,
+            decoration: const InputDecoration(
+              hintText: 'Enter your dog\'s Birthday',
+              labelText: 'Dog\'s Birthday',
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color:  Color.fromARGB(255, 28, 163, 41),
+                ),
+              ),
+              filled: true, // Set filled property to true
+              fillColor: Color.fromARGB(255, 205, 189, 175),
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 17.0, // Adjust vertical padding
+                horizontal: 26.0, // Adjust horizontal padding
+              ),))))
+              ),
+            const  SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40.0, right: 40),
+                child: Container(
+                  width: 200, // Adjust the width of the box as desired
+                  height: 350, // Adjust the height of the box as desired
+                  decoration: BoxDecoration(
+                    color: Colors.white, // Color of the box
+                    border: Border.all(
+                        color: Colors.white, width: 2), // Border properties
+                  ),
+                  child: Image.asset(
+                    "assets/Images/bday.jpg",
+                    fit: BoxFit.contain, // Fit the image within the box
+                  ),
+                ),
+              ),
+            const  SizedBox(
+                height: 40,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 210.0, right: 41),
+                child: MaterialButton(
+                  height: 50,
+                  minWidth: 90,
+          
+                  onPressed: () async {
+                   
+            if (_textEditingController.text.isEmpty || _dogAge == null) {
+              // Show snackbar to inform the user to enter the details
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Please select your dog\'s birthday and calculate the age.'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            } else {
+              // Obtain the current user's ID from Firebase Authentication
+              User? user = FirebaseAuth.instance.currentUser;
+              if (user != null) {
+                String userUid = user.uid;
+          
+                // Write dog's age to Firestore
+                await userDataCollection.doc(userUid).update({'age': _dogAge});
+          
+                // Navigate to the next screen
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const ScreenGender()),
+                );
+              } else {
+                print("User is not authenticated.");
+                // Handle the case where the user is not authenticated
+              }
+             }
+              },
+          
+                  // ignore: sort_child_properties_last
+          
+                  // ignore: prefer_const_constructors
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(color: Colors.white, fontSize: 22),
+                  ),
+                  // ignore: prefer_const_constructors
+                  color: Color.fromARGB(
+                    255,
+                    28,
+                    163,
+                    41,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+              ),
+            ]),
+          )),
     );
   }
 }

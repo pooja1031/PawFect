@@ -13,7 +13,8 @@ class BottomNavigationWidget extends StatelessWidget {
       valueListenable: indexChangeNotifier,
       builder: (context, int newIndex, _) {
         return Container(
-          height: 84,
+          height: 80,
+          
           child: BottomNavigationBar(
             currentIndex: newIndex,
             onTap: (index) {

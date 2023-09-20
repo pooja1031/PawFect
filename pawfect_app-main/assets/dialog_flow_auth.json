@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "vetbotexpert-9wnc",
+  "private_key_id": "a37b6fc18df1ddd5deea018818afdce11dc04a85",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCela1alyMYDCfG\n0/tONzDM98e/QKJ0rf55lCJ+hprQ8s06CiBmSZVzpZPLN+FWGyew2gvatdyhAoap\nLAgcOM1vPlcq62ETltmRLjKTpJzpxaR7iMzq2nKgDRpxQu4WQbiCKzg/oMtq0mDl\nGl6v7O/g1ha4TNP/ffvtu8vPcTSuEJb2qufRJY5wezp0Aa4ByJ5vytxVJajPExp8\nGJNklTUnEfA10R3f2w2wBxuAhf3X4wT1/sNeIo+MbTD5yaQJLW5RtVE0zCKWLZxy\notyHTPwlRAnorm1pVb+FeQIqAKPLxcrpKOE++xyVpiODAEuudONVKLUW5XKFuofO\n3t1FerYZAgMBAAECggEAPNXkg60ZDF+VXsPxUwb/FJI1MVwlNieNSKyYMvuGJoQO\nUKaT2Ul/KLcrJDlSm0qdhk2PYJ6FfcrPR9SZY+IyhOtgWxmiyvYCjpwvUM5EV7W3\nLKDFI48bi+Sa8Togxa7+jgjwchBIGLmN7DWaf1igiRr36kmmxgtZetChFfoyoFco\nR9wPpdsBY1D6LppzL++KrI+KpdHQWWK359rmJxT09LZ4T6K6e4JgYc/VwLzMZPiC\nyKBvRk6iWaWjf/miG9+0PcFkUzfptey181cvXPdGPS+M2W9ymEgulOmxWnvkvBv5\naVFgmTsyRyv7poBhXwB65iUxTqXU+b0JqAgnPsY1tQKBgQDMK61pekuNpL76sZlP\nMtLkBK15bsru3cOhbNTb9hxnbsaXaGdVRlkcEojR7bZ7QUBir8eLjPqVqnvut5UJ\nYzaeoOc8FaU3gxnSBGSZ3W6pQ4daujDQt8MEeNVW4vxM5UxZtxXUBeR3AUTDtjle\npac26yKFuKf3fe4y+YyqaaGiwwKBgQDG14gaim4I6xLWKQVtrmYWLsVLd08LkwJL\n1T8IT9dzQEnUVhVRZmmzQVa+I0FCHV886mMV5sjs4GerobysROffTlfh5atDCIDl\n9B9MWHucoSQWg7Sg0gHF4fYdVzw6twQx22cMbC0vke8ToR0nOVCPrsk/d+i0T9HB\nMgump9x98wKBgALpsJyroP5RVmQvOne1yupz4qGz4fNMeKkJ63OD7F3RZ8XrOGYw\nDb9nyEnucUcK5EdEKL2l8kFGYGREfDzZDINw2juyN1w2Y5zqcSD81sJVc03pEB86\nL+8VZj3KGT1jnBY/lXEj8GF+RCPiqqjeBiezbRepTcQrKMXTZ51aynKPAoGAKxbl\n3aqF8dTPPi2hiYUzhjcYdiQiswVmh/xsLmbu74DM/wCwmfUxjrDoFUgaijNHQjIg\nysw6Wmq+zIi+FC7SeKfHj6JvnJUpKavfZHIAR477/Q0JhZg83h77cJxI5whmFk/P\nYvfGSvq67mwJn0hiVuCvp9taSEjL0awArlrOA1UCgYEAmYyPnzJqPhABBjA13ldt\nHkzrLpS9WlMweoc5tbuysYplhJ83zTw8U3QC67MnjwgLaJT2jJ1z7qxcM2AWoW1z\nhc6kPKjEqq6ql563X8DKHKmxa/Jt/uF8CuwceMcW6Tm1CVENBElqgk7J6lhXM6KX\nm7ape4xpJ9SPGkbPyQFcGls=\n-----END PRIVATE KEY-----\n",
+  "client_email": "vetexpert@vetbotexpert-9wnc.iam.gserviceaccount.com",
+  "client_id": "117416743736985776504",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vetexpert%40vetbotexpert-9wnc.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

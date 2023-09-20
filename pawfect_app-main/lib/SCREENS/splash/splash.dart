@@ -35,6 +35,19 @@ class _splashscreenState extends State<splashscreen> {
         child: Scaffold(
       backgroundColor: customColor,
       body: Container(
+decoration:const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+
+              Color.fromARGB(255, 28, 163, 41),    // Ending color
+              Color.fromARGB(255, 200, 234, 203), // Starting color
+
+            ],
+          ),
+        ),
+
         child: Column(
           children: [
             DefaultTextStyle(
